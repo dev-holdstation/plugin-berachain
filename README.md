@@ -13,7 +13,9 @@ This plugin provides functionality to:
 The plugin requires the following environment variables:
 
 ```env
+# Berachain Configuration
 BERACHAIN_PRIVATE_KEY=            # Required: Your wallet's private key
+BERACHAIN_RPC_URL=                # Required
 ```
 
 ## Installation
