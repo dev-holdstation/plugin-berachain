@@ -6,7 +6,7 @@ export interface SwapParams extends Content {
     inputTokenSymbol?: string;
     outputTokenCA?: Address;
     outputTokenSymbol?: string;
-    amount: bigint;
+    amount: string;
     slippage?: number;
 }
 
@@ -16,9 +16,24 @@ export interface SwapResult {
     inputTokenSymbol?: string;
     outputTokenCA?: Address;
     outputTokenSymbol?: string;
-    amount: bigint;
+    amount: string;
     slippage?: number;
     text?: string;
+}
+
+export interface TransferParams extends Content {
+    inputTokenCA?: Address;
+    inputTokenSymbol?: string;
+    amount: string;
+    recipient: Address;
+}
+
+export interface TransferResult {
+    hash: Hex;
+    inputTokenCA?: Address;
+    inputTokenSymbol?: string;
+    amount: string;
+    recipient: Address;
 }
 
 export interface SendTransactionParams {

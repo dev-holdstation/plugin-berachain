@@ -51,7 +51,7 @@ export class SwapAction {
         const decimals = filters[0].decimals ?? 18;
 
         // parse amount out
-        const tokenAmount = parseUnits(params.amount.toString(), decimals);
+        const tokenAmount = parseUnits(params.amount, decimals);
 
         if (!params.outputTokenCA && !params.outputTokenSymbol) {
             throw new Error("Output token not provided");
@@ -73,7 +73,7 @@ export class SwapAction {
             params.outputTokenSymbol = filters[0].symbol;
         }
 
-        elizaLogger.info("--- Swap params:", params);
+        elizaLogger.info("--- Swap params:", params, tokenAmount);
 
         // fetch swap tx data
         const walletAddress = this.walletProvider.getAddress();
@@ -220,20 +220,20 @@ export const swapAction: Action = {
             {
                 user: "{{user1}}",
                 content: {
-                    text: "Swap 100 HONEY for BERA",
+                    text: "Swap 100 USDC for BERA",
                 },
             },
             {
                 user: "{{agent}}",
                 content: {
-                    text: "Sure, I'll do swap 100 HONEY for BERA now.",
+                    text: "Sure, I'll do swap 100 USDC for BERA now.",
                     action: "TOKEN_SWAP",
                 },
             },
             {
                 user: "{{agent}}",
                 content: {
-                    text: "Swap completed 100 HONEY for BERA successfully! Transaction: ...",
+                    text: "Swap completed 100 USDC for BERA successfully! Transaction: ...",
                 },
             },
         ],

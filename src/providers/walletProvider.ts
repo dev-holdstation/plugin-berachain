@@ -16,7 +16,7 @@ import type {
 } from "../types";
 
 import NodeCache from "node-cache";
-import { Address, erc20Abi } from "viem";
+import { Address, erc20Abi, Hex } from "viem";
 import { ethers, Wallet } from "ethers";
 
 export class WalletProvider {
@@ -68,6 +68,22 @@ export class WalletProvider {
         const txResp = await this.wallet.sendTransaction(req);
         console.log("sendTransaction txhash:", txResp.hash);
         return txResp.hash;
+    }
+
+    async transfer(
+        tokenAddress: Address,
+        amount: bigint,
+        recipient: Address
+    ): Promise<Hex> {
+        const tokenContract = new ethers.Contract(
+            tokenAddress,
+            erc20Abi,
+            this.wallet
+        );
+        const nonce = await this.wallet.getNonce();
+        const tx = await tokenContract.transfer(recipient, amount, { nonce });
+        const receipt = await tx.wait();
+        return receipt.hash;
     }
 
     async fetchPortfolio(): Promise<WalletPortfolio> {
