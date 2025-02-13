@@ -1,5 +1,4 @@
 {
-    "extends": "../core/tsconfig.json",
     "compilerOptions": {
         "outDir": "dist",
         "rootDir": "src",
@@ -11,7 +10,8 @@
         "allowImportingTsExtensions": true,
         "isolatedModules": true,
         "esModuleInterop": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "moduleResolution": "node"
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts"],
     "exclude": [
