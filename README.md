@@ -7,6 +7,7 @@ Berachain Plugin for Eliza
 This plugin provides functionality to:
 
 -   Token swapping on hold.so (Holdstation swap)
+-   Transfer tokens
 
 ## Configuration
 
