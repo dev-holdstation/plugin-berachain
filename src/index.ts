@@ -1,4 +1,4 @@
-import { Plugin } from "@elizaos/core";
+import type { Plugin } from "@elizaos/core";
 import { swapAction } from "./actions/swapAction";
 import { transferAction } from "./actions/transferAction";
 
